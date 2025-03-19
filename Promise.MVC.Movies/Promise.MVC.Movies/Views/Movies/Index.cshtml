@@ -1,0 +1,63 @@
+﻿@model Promise.MVC.Movies.Models.MovieViewModel
+@{
+    ViewData["Title"] = "Movies";
+}
+
+<h1>@ViewData["Title"]</h1>
+<form asp-action="Index" method="get">
+    <p>
+        <input type="text" name="searchString" placeholder="Search by title" />
+        <input type="submit" value="Search" />
+    </p>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Movies[0].Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Movies[0].Director)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Movies[0].ReleaseDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Movies[0].Genre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Movies[0].Price)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Movies)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Director)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReleaseDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Genre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    <a asp-action="EditMovie" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="MovieDetail" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="DeleteMovie" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+    </table>
+
+<a asp-action="CreateMovie">Create New</a>
