@@ -11,7 +11,7 @@ using Promise.MVC.Movies.Data;
 
 namespace Promise.MVC.Movies.Migrations
 {
-    [DbContext(typeof(AppDbContext))]
+    [DbContext(typeof(MovieDbContext))]
     [Migration("20250319102306_InitialMigrationToDb")]
     partial class InitialMigrationToDb
     {

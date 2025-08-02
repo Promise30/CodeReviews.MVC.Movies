@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Promise.MVC.Movies.Data;
 
@@ -11,9 +12,11 @@ using Promise.MVC.Movies.Data;
 namespace Promise.MVC.Movies.Migrations
 {
     [DbContext(typeof(MovieDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250802142401_AddLogModel")]
+    partial class AddLogModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,6 +50,20 @@ namespace Promise.MVC.Movies.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "1",
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
+                        },
+                        new
+                        {
+                            Id = "2",
+                            Name = "User",
+                            NormalizedName = "USER"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -141,35 +158,37 @@ namespace Promise.MVC.Movies.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "8e445865-a24d-4543-a6c6-9443d048cdb8",
+                            Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c8554266-b401-4513-9e3d-9dcf5c6bf8f8",
+                            ConcurrencyStamp = "694d9c7c-decb-46f9-bae9-94d2f6c3fb3b",
                             Email = "johndoe@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "JOHNDOE@GMAIL.COM",
-                            NormalizedUserName = "JOHNDOE@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEPbr2g/tkz59UUzefT046CregZrIT/vTdnBo0JwGTD1QPx2qwyvBg8yYV/cDEz9iOA==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "",
+                            NormalizedUserName = "JOHNDOE",
+                            PasswordHash = "AQAAAAIAAYagAAAAEHL9jga9mbTptjayg2GUXwUjo8BpUbeYKN+xfewDu4O3YJ3wjDJg2xq3QPp24e4Ywg==",
+                            PhoneNumber = "1234567890",
+                            PhoneNumberConfirmed = true,
+                            SecurityStamp = "c3a81fab-6839-4eea-894e-1fd066b82ca2",
                             TwoFactorEnabled = false,
-                            UserName = "johndoe@gmail.com"
+                            UserName = "JohnDoe"
                         },
                         new
                         {
-                            Id = "8e445865-a24d-4543-a6c6-9443d048cdb7",
+                            Id = "2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c8554266-b401-4513-9e3d-9dcf5c6bf8f9",
+                            ConcurrencyStamp = "cd95b0c2-35d1-4e10-a235-3499b5b09a7d",
                             Email = "janedoe@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "JANEDOE@GMAIL.COM",
-                            NormalizedUserName = "JANEDOE@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEPpjsB2W25waFbwxKMUtB0eDK7DXTimaSfJPrP7glbe0WGyVCsY7B9Av7xDIez4hmw==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "",
+                            NormalizedUserName = "JANEDOE",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGcLgYduk773EfWooVbzp03KFLjIU1S7XQtleT+uZg8u4oNAyqkF53rKWvCJJb8HdA==",
+                            PhoneNumber = "0987654321",
+                            PhoneNumberConfirmed = true,
+                            SecurityStamp = "9fff7e89-805c-4afe-bc03-5817f91ad8c2",
                             TwoFactorEnabled = false,
-                            UserName = "janedoe@gmail.com"
+                            UserName = "JaneDoe"
                         });
                 });
 

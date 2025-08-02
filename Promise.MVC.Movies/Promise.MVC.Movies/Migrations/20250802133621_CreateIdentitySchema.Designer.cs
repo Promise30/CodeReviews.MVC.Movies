@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Promise.MVC.Movies.Data;
 
@@ -11,9 +12,11 @@ using Promise.MVC.Movies.Data;
 namespace Promise.MVC.Movies.Migrations
 {
     [DbContext(typeof(MovieDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250802133621_CreateIdentitySchema")]
+    partial class CreateIdentitySchema
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -137,40 +140,6 @@ namespace Promise.MVC.Movies.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "8e445865-a24d-4543-a6c6-9443d048cdb8",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "c8554266-b401-4513-9e3d-9dcf5c6bf8f8",
-                            Email = "johndoe@gmail.com",
-                            EmailConfirmed = true,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "JOHNDOE@GMAIL.COM",
-                            NormalizedUserName = "JOHNDOE@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEPbr2g/tkz59UUzefT046CregZrIT/vTdnBo0JwGTD1QPx2qwyvBg8yYV/cDEz9iOA==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "",
-                            TwoFactorEnabled = false,
-                            UserName = "johndoe@gmail.com"
-                        },
-                        new
-                        {
-                            Id = "8e445865-a24d-4543-a6c6-9443d048cdb7",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "c8554266-b401-4513-9e3d-9dcf5c6bf8f9",
-                            Email = "janedoe@gmail.com",
-                            EmailConfirmed = true,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "JANEDOE@GMAIL.COM",
-                            NormalizedUserName = "JANEDOE@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEPpjsB2W25waFbwxKMUtB0eDK7DXTimaSfJPrP7glbe0WGyVCsY7B9Av7xDIez4hmw==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "",
-                            TwoFactorEnabled = false,
-                            UserName = "janedoe@gmail.com"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -256,28 +225,6 @@ namespace Promise.MVC.Movies.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
-                });
-
-            modelBuilder.Entity("Promise.MVC.Movies.Models.LogEntry", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Message")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("StackTrace")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("Timestamp")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("LogEntries");
                 });
 
             modelBuilder.Entity("Promise.MVC.Movies.Models.Movie", b =>
